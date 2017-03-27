@@ -46,10 +46,12 @@ plt0.ylabel('y train')
 plt0.text(2, 1.5, r'$y =A x + b$', fontsize=15)
 #plt0.text(2, 1, r'$A = 1$, $b = 0$', fontsize=15)
 plt0.show()
+plt0.savefig(os.path.basename(__file__)+".train.png")
 
 plt1.plot(range(len(history.history['loss'])), history.history['loss'])
 plt1.xlabel('step')
 plt1.ylabel('loss')
 
 plt1.show()
+plt1.savefig(os.path.basename(__file__)+".loss.png")
 
