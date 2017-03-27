@@ -11,11 +11,36 @@ model.add(Dense(1, activation='sigmoid'))
 model.compile(loss='binary_crossentropy', optimizer='sgd',
               lr=0.1, metrics=['accuracy'])
 
+from keras.callbacks import History
+history = History()
+
 model.summary()
-model.fit(x_data, y_data, nb_epoch=50000)
+#model.fit(x_data, y_data, nb_epoch=50000)
+model.fit(x_data, y_data, nb_epoch=50000, callbacks=[history])
+
+
+print history.history
 
 print(model.predict_classes(x_data))
 
 score = model.evaluate(x_data, y_data, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
+
+#import matplotlib.pyplot as plt0
+import matplotlib.pyplot as plt1
+
+#plt1.plot(range(len(history.history['loss'])), history.history['loss'])
+plt1.figure(1)
+plt1.subplot(211)
+
+plt1.ylabel('loss')
+plt1.plot(range(len(history.history['loss'])), history.history['loss'])
+
+plt1.subplot(212)
+plt1.ylabel('acc')
+plt1.plot(range(len(history.history['acc'])), history.history['acc'])
+plt1.xlabel('step')
+
+
+plt1.show()

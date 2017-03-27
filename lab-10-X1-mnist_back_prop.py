@@ -28,6 +28,7 @@ def sigma_prime(x):
     # derivative of the sigmoid function
     return sigma(x) * (1 - sigma(x))
 
+
 # Forward prop
 l1 = tf.add(tf.matmul(X, w1), b1)
 a1 = sigma(l1)

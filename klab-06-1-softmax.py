@@ -23,5 +23,7 @@ model.compile(loss='categorical_crossentropy',
 
 history = model.fit(x_data, y_data, nb_epoch=1000)
 
+model.summary()
+
 print(model.predict_classes(np.array([[1, 2, 1, 1]])))
 print(model.predict_classes(np.array([[1, 2, 5, 6]])))

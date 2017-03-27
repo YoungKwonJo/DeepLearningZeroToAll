@@ -30,5 +30,6 @@ class SquareTest(tf.test.TestCase):
             norm_values = tf.nn.l2_normalize(values, dim=1)
             print(norm_values.eval())
 
+
 if __name__ == '__main__':
     tf.test.main()

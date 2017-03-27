@@ -1,4 +1,4 @@
-from keras.models import Sequential
+    from keras.models import Sequential
 from keras.layers import Dense
 
 x_data = [[0., 0.], [0., 1.], [1., 0.], [1., 1.]]
