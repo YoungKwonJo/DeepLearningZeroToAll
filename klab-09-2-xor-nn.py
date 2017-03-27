@@ -27,6 +27,20 @@ score = model.evaluate(x_data, y_data, verbose=0)
 print('Test score:', score[0])
 print('Test accuracy:', score[1])
 
+import os
+# serialize model to JSON
+model_json = model.to_json()
+with open(os.path.basename(__file__)+".model.json", "w") as json_file:
+    json_file.write(model_json)
+# serialize weights to HDF5
+model.save_weights(os.path.basename(__file__)+".model.h5")
+print("Saved model to disk")
+
+
+from keras.utils import plot_model
+plot_model(model, to_file=os.path.basename(__file__)+'.png', show_shapes=True)
+
+
 #import matplotlib.pyplot as plt0
 import matplotlib.pyplot as plt1
 
