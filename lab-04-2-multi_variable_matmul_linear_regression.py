@@ -17,7 +17,7 @@ b = tf.Variable(tf.random_normal([1]), name='bias')
 # Hypothesis
 hypothesis = tf.matmul(X, W) + b
 
-# Simplified cost function
+# Simplified cost/loss function
 cost = tf.reduce_mean(tf.square(hypothesis - Y))
 
 # Minimize
@@ -30,11 +30,10 @@ sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
 for step in range(2001):
-    feed = {X: x_data, Y: y_data}
-    sess.run(train, feed_dict=feed)
+    cost_val, hy_val, _ = sess.run(
+        [cost, hypothesis, train], feed_dict={X: x_data, Y: y_data})
     if step % 10 == 0:
-        print(step, "Cost: ", sess.run(cost, feed_dict=feed),
-              "\nPrediction:\n", sess.run(hypothesis, feed_dict=feed))
+        print(step, "Cost: ", cost_val, "\nPrediction:\n", hy_val)
 
 '''
 0 Cost:  7105.46
